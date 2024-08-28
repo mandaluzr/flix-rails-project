@@ -11,9 +11,16 @@
   </head>
 
   <body>
-  <header> 
-    <h1>Flix</h1>
-  </header>
+    <header>
+     <nav> 
+       <%= link_to(image_tag("logo.png"), root_path) %>
+       <ul>
+        <li>
+          <%= link_to("All Movies", movies_path) %>
+        </li>
+       </ul>
+     </nav>
+    </header>
 
   <div class="content">
     <%= yield %>
@@ -21,7 +28,7 @@
   <footer>
     <p>
     Copyright &copy; <%= Time.now.year %>
-    Made in <a href="https://pragmaticstudio.com"> The Pragmatic Studio</a>
+    Made by <a href="https://github.com/mandaluzr"> Marcos Andaluz de Rosas</a>
     </p>
   </footer>
 
