@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
 
     def self.released
-        where("released_on > ?", Time.now).order("released_on")
+        where("released_on < ?", Time.now).order("released_on")
     end
 
     def flop?
