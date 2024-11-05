@@ -13,8 +13,7 @@ class MoviesController < ApplicationController
 
   def update
     @movie = Movie.find(params[:id])
-    @movie.update(movie_params)
-    redirect_to @movie
+    save_movie(@movie, :edit)
   end
 
   def new
@@ -23,9 +22,8 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-    @movie.save
-    redirect_to @movie
-  end
+    save_movie(@movie, :new)
+   end
 
   def destroy
     @movie = Movie.find(params[:id])
@@ -34,6 +32,14 @@ class MoviesController < ApplicationController
   end
 
   private
+
+  def save_movie(movie, action)
+    if movie.save
+      redirect_to movie, notice: "Movie successfully #{action}!"
+    else
+      render action, status: :unprocessable_entity
+    end
+  end
 
   def movie_params
     params.require(:movie).permit(:title, :rating, :total_gross, :description, :released_on, :image_file_name, :duration, :director)
