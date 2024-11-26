@@ -1,5 +1,6 @@
 # config/routes.rb
 Rails.application.routes.draw do
+  resources :reviews
     # Ruta raíz de la aplicación, apunta a MoviesController#index
     root "movies#index"
   
