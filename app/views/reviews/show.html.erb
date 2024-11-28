@@ -1,0 +1,17 @@
+<p>
+  <strong>Reviewer Name:</strong> <%= @review.name %>
+</p>
+
+<p>
+</p>
+
+<p>
+  <strong>Comment:</strong> <%= @review.comment %>
+</p>
+
+<p>
+  <strong>Submitted:</strong> <%= time_ago_in_words(@review.updated_at) %> ago
+</p>
+
+<%= link_to "Edit Review", edit_movie_review_path(@review.movie, @review), class: "button" %>
+<%= link_to "Back to Movie", movie_path(@review.movie), class: "button" %>

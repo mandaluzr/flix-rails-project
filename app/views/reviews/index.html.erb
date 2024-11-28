@@ -1,16 +1,22 @@
 <ul class="reviews">
   <% @reviews.each do |review| %>
     <li>
-      <%= pluralize(review.stars, 'star') %>
+      <%= render "shared/stars", percent: review.stars_as_percent %>
       <p>
         <%= review.name %>
         <span class="date">
-          <%= time_ago_in_words(review.created_at) %> ago
+          <%= time_ago_in_words(review.updated_at) %> ago
         </span>
       </p>
       <p>
         <%= review.comment %>
       </p>
+      <section class="admin">
+        <%= link_to "Edit", edit_movie_review_path(@movie, review), class: "button" %>
+        <%= link_to "Delete", movie_review_path(@movie, review), method: :delete,
+                    data: { turbo_confirm: "Are you sure?" }, class: "button" %>
+      </section>
     </li>
   <% end %>
 </ul>
+

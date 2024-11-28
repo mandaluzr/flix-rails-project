@@ -1,0 +1,23 @@
+<%= form_with(model: [review.movie, review], local: true) do |f| %>
+  <div class="field">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="legend">Stars</div>
+  <% Review::STARS.each do |star| %>
+    <span class="star">
+      <%= f.radio_button :stars, star %>
+      <%= f.label :stars, star, value: star %>
+    </span>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comment, "Comment" %>
+    <%= f.text_area :comment %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
