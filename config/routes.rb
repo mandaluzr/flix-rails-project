@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       resources :reviews
     end
 
+    # Rutas RESTful para el controlador Sessions
+    resources :sessions, only: [:new, :create, :destroy]
+
     # Rutas RESTful para el controlador Users
     resources :users
     get "signup" => "users#new"
@@ -19,6 +22,5 @@ Rails.application.routes.draw do
         get :search  # Esto generará la ruta /tmdb/search para realizar búsquedas
       end
     end
-    
   end
   
