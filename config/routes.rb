@@ -1,6 +1,6 @@
 # config/routes.rb
 Rails.application.routes.draw do
-  resources :users
+
     # Ruta raíz de la aplicación, apunta a MoviesController#index
     root "movies#index"
   
@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :movies do
       resources :reviews
     end
+
+    # Rutas RESTful para el controlador Users
+    resources :users
+    get "signup" => "users#new"
   
     # Rutas para el controlador Tmdb, con solo la acción de búsqueda
     resources :tmdb, only: [] do
